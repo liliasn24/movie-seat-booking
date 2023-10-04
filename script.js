@@ -27,6 +27,25 @@ function updateSelectedCount() {
   console.log(count.innerText);
 }
 
+//get data from local storage and populate the UI
+
+function populateUI() {
+  const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add("selected");
+      }
+    });
+  }
+
+  const selectedMovieIndex = localStorage.getItem("selectedMovieIndex");
+  if (selectedMovieIndex !== null) {
+    movieSelect.selectedIndex = selectedMovieIndex;
+  }
+}
+
 //movie select event
 
 movieSelect.addEventListener("change", (e) => {
@@ -44,3 +63,7 @@ container.addEventListener("click", (e) => {
     updateSelectedCount();
   }
 });
+
+// initial count and total set
+
+updateSelectedCount();
