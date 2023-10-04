@@ -64,7 +64,7 @@ body {
 
 .seat:not(.occupied):hover {
     cursor: pointer;
-    transform: scale(2);
+    transform: scale(1.5);
 }
 
 
